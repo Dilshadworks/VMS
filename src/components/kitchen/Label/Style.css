@@ -1,0 +1,10 @@
+/**** Label Style ****/
+label{
+    display: block;
+}
+.form-label{
+    margin-bottom: .5rem;
+    font-weight: 500;
+    color: #a6a6a6;
+    font-size: 16px;
+}

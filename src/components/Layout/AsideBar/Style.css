@@ -1,0 +1,17 @@
+/**** Nav-Menu_AsideBar Style ****/
+
+.sideBar {
+    width: 16%;
+    background-color: #201d2e;
+    transition: all .5s;
+    height: 100vh;
+}
+header {
+    padding: 20px;
+    text-align: center;
+    background: #1c1a28;
+    font-size: 20px;
+    font-weight: 400;
+    user-select: none;
+    color: white;
+}

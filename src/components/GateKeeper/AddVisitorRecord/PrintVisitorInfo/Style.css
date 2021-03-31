@@ -1,0 +1,11 @@
+.printSlipBtn {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.entryTitle{
+    text-align: center;
+}
+.btnItems{
+    width: 30%;
+}

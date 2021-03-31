@@ -1,0 +1,39 @@
+/**** Cards Style ****/
+
+.card {
+  width: 25%;
+  margin-right: 40px;
+  border-radius: 8px;
+  text-align: center;
+  background: white;
+  padding: 20px;
+  box-shadow: var(--funky-shadow);
+}
+
+.card:last-child {
+  margin-right: 0px;
+}
+
+.cardTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+}
+
+.cardTitle p {
+  font-size: 18px;
+  padding-left: 10px;
+}
+
+.cardTitle b {
+  font-size: 22px;
+}
+.cardSubTitle{
+  color: #000;
+  font-size: 16px;
+  text-align: center;
+  display: block;
+  padding-top: 10px;
+  font-weight: 500;
+}

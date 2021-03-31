@@ -1,0 +1,21 @@
+/**** Monthly Visitors Style ****/
+
+.imgLabel {
+  display: flex;
+  justify-content: center;
+}
+
+.main-title {
+  font-size: 26px;
+  letter-spacing: 0;
+  font-weight: 600;
+  text-align: center;
+  display: block;
+  padding: 8px 0px;
+  margin: 0px;
+}
+
+.mthBtn {
+  width: 50%;
+  margin: 0 auto;
+}

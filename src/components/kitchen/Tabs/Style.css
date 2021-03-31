@@ -1,0 +1,21 @@
+.tabsBtn{
+  display: block;
+}
+.tabsBtn > li{
+  display: inline-block;
+  padding: 0px 24px;
+}
+.noPadding{
+  padding: 10px 18px 0px 18px;
+}
+.current{
+ color: blue;
+ font-weight: bold;
+ position: relative;
+ border-bottom: 4px solid #1e1e2d;
+
+}
+
+
+
+

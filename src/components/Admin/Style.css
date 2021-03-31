@@ -1,0 +1,8 @@
+.adminCardList {
+    justify-content: space-between;
+}
+
+.AddUserBtn {
+    width: 20%;
+    margin-left: auto;
+}

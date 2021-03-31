@@ -1,0 +1,42 @@
+/**** Drop_Down Style ****/
+.dropdown {
+    cursor: pointer;
+    user-select: none;
+    -webkit-appearance: none;
+    padding: 6.5px 14px;
+    font: inherit;
+    color: currentColor;
+    width: 100%;
+    border-radius: 4px;
+    margin: 0;
+    display: block;
+    box-sizing:border-box;
+    outline: #707070 auto 1px;
+}
+
+.dropdown:focus {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0.05);
+    outline: #707070 auto 1px;
+}
+
+.iconOutlined {
+    right: 7px;
+}
+
+.icon {
+    top: calc(50% - 7px);
+    color: #369afc;
+    right: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.caret {
+    fill: currentColor;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    font-size: 2.5rem;
+    user-select: none;
+}

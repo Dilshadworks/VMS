@@ -1,0 +1,23 @@
+/**** Main_Body Style ****/
+
+.progressBar {
+    margin-top: 10px;
+    color: white;
+    text-align: center;
+    display: flex;
+    height: 1rem;
+    overflow: hidden;
+    font-size: .75rem;
+    background-color: #369afc;
+    border-radius: .25rem;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    transition: width .6s ease;
+}
+
+.tabs {
+    display: flex;
+    justify-Content: space-around;
+    align-Items: center;
+}

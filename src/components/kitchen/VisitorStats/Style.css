@@ -1,0 +1,50 @@
+/**** Visitor_Stats Style ****/
+
+.Visitors {
+    width: 92%;
+    padding: 36px 0px 10px 0px;
+    margin: 0px auto;
+}
+
+.Vmain {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 35px;
+}
+
+.avatar {
+    display: flex;
+    align-items: center;
+}
+.visitorInfo{
+    margin-left: 20px;
+    
+}
+.visitorInfo p{
+    margin: 0;
+    font-size: 20px;
+    color: #000;
+    font-weight: 600;
+}
+.visitorInfo span{
+    color: #666;
+    width: 100%;
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+}
+.counter{
+    width: 36px;
+    margin: 0;
+    background-color: #607d8b;
+    border-radius: 6px;
+    padding: 5px;
+    font-size: 26px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}

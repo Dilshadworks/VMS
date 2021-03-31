@@ -1,0 +1,14 @@
+/**** Tabs_Buttons Style ****/
+
+.tablinks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.figure {
+    background-color: #369afc;
+    border-radius: 50%;
+    padding: 10px;
+}

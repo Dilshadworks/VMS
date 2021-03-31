@@ -1,0 +1,33 @@
+/**** Tabs_Description Style ****/
+
+.formControl {
+  color: rgba(0, 0, 0, 0.87);
+  cursor: text;
+  display: block;
+  position: relative;
+  font-size: 1rem;
+  box-sizing: border-box;
+  align-items: center;
+  font-weight: 400;
+  line-height: 1.1876em;
+  letter-spacing: 0.00938em;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  width: 49%;
+  position: relative;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  margin: 30px 0px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: x-large;
+}

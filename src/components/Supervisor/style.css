@@ -1,0 +1,28 @@
+/**** Supervisor Style ****/
+
+.supervisor {
+    width: 100%;
+}
+
+.supervisor span {
+    margin: 0;
+    padding-top: 20px;
+    display: block;
+    padding-bottom: 15px;
+    color: #000;
+    font-size: 18px;
+    text-align: left;
+}
+
+.CardsList {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.tableStructure {
+    box-shadow: var(--funky-shadow);
+    background-color: white;
+    border-radius: 8px;
+}
