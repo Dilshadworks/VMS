@@ -1,92 +1,14 @@
 import React, { useState } from "react";
 import Styles from "./Style.css";
-import VisitorThead from "../../kitchen/VisitorThead/VisitorThead";
-import VisitorTbody from "../../kitchen/VisitorTbody/VisitorTbody";
-import VisitorSearch from "../../kitchen/VisitorSearch/VisitorSearch";
 import CustomButton from "../../kitchen/CustomButton/CustomButton";
 import { Link } from "react-router-dom";
 import { BsBook } from "react-icons/bs";
 import ModalBox from "../../kitchen/ModalBox/ModalBox";
 import IdScanerModal from "./IdScanerModal/IdScanerModal";
-import { PaginationComponent } from "../../kitchen/Pagination/Pagination";
-import Table from "../../kitchen/Table/Table";
+import { MyTable } from "../../kitchen/MyTable/MyTable";
+import VisitorSearch from "../../kitchen/VisitorSearch/VisitorSearch";
 
-let thead = [
-  "CNIC",
-  "Arrival Date",
-  "Site of visit",
-  "Visit Type",
-  "Time In",
-  "Requester information",
-];
 
-let tbody = [
-  {
-    name: "Ahmed",
-    cnic: "54545677-5",
-    date: "21-2-2021",
-    site: "DHA",
-    visit: "Meeting",
-    timeInOut: "In 12:00 pm -out 1:00 pm",
-  },
-  {
-    name: "Ahmed",
-    cnic: "54545677-5",
-    date: "21-2-2021",
-    site: "DHA",
-    visit: "Meeting",
-    timeInOut: "In 12:00 pm -out 1:00 pm",
-  },
-  {
-    name: "Ahmed",
-    cnic: "54545677-5",
-    date: "21-2-2021",
-    site: "DHA",
-    visit: "Meeting",
-    timeInOut: "In 12:00 pm -out 1:00 pm",
-  },
-  {
-    name: "Ahmed",
-    cnic: "54545677-5",
-    date: "21-2-2021",
-    site: "DHA",
-    visit: "Meeting",
-    timeInOut: "In 12:00 pm -out 1:00 pm",
-  },
-  {
-    name: "Ahmed",
-    cnic: "54545677-5",
-    date: "21-2-2021",
-    site: "DHA",
-    visit: "Meeting",
-    timeInOut: "In 12:00 pm -out 1:00 pm",
-  },
-
-  {
-    name: "Ghumman",
-    cnic: "54545677-5",
-    date: "21-2-2021",
-    site: "DHA",
-    visit: "Meeting",
-    timeInOut: "In 12:00 pm -out 1:00 pm",
-  },
-  {
-    name: "Riqza",
-    cnic: "54545677-5",
-    date: "21-2-2021",
-    site: "DHA",
-    visit: "Meeting",
-    timeInOut: "In 12:00 pm -out 1:00 pm",
-  },
-  {
-    name: "M.Razi",
-    cnic: "54545677-5",
-    date: "21-2-2021",
-    site: "DHA",
-    visit: "Meeting",
-    timeInOut: "In 12:00 pm -out 1:00 pm",
-  },
-];
 
 export function VisoterRecord() {
   const [modalToggle, setModalToggle] = useState(false);
@@ -113,24 +35,7 @@ export function VisoterRecord() {
           <div className="bannerBottom">
             <Link to="/currentlyCheckedIn">Currently Checked In</Link>
           </div>
-          {/* <table className="table abcd">
-            <thead className="thead">
-              <tr className="tr">
-                <th>
-                  <VisitorSearch />
-                </th>
-                <VisitorThead TheadItem={thead} />
-              </tr>
-            </thead>
-            <tbody className="tbody">
-              <VisitorTbody
-                TbodyItems={tbody}
-                myButtonTitle="View Informatio"
-              />
-            </tbody> 
-            <PaginationComponent tableValues={tbody} />
-          </table>*/}
-          <Table Columns={thead} rows={tbody} isAdministorCompTable="false" />
+          <MyTable data={VisitorData} heads={visitorHead} />
         </div>
       </div>
       {modalToggle && (
@@ -145,3 +50,42 @@ export function VisoterRecord() {
     </>
   );
 }
+
+
+
+let visitorHead = [
+  <>
+    <VisitorSearch />
+  </>,
+  "CNIC",
+  "Arrival Date",
+  "Site of visit",
+  "Visit Type",
+  "Time In",
+  "Requester information",
+];
+
+let VisitorData = [
+  [
+    "Ahmed",
+    "54545677-5",
+    "21-2-2021",
+    "DHA",
+    "Meeting",
+    "In 12:00pm Out 02:00am",
+    <>
+      <CustomButton btnTitle="View Information" />
+    </>,
+  ],
+  [
+    "Ahmed",
+    "54545677-5",
+    "21-2-2021",
+    "DHA",
+    "Meeting",
+    "In 12:00pm Out 02:00am",
+    <>
+      <CustomButton btnTitle="View Information" />
+    </>,
+  ],
+];

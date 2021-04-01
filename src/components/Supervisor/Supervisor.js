@@ -1,17 +1,15 @@
 import React from "react";
 import "./style.css";
-import "./style.css";
-import VisitorThead from "../kitchen/VisitorThead/VisitorThead";
-import VisitorTbody from "../kitchen/VisitorTbody/VisitorTbody";
-import CustomButton from "../kitchen/CustomButton/CustomButton";
 import { Link } from "react-router-dom";
 import Carrds from "../kitchen/Cards/Carrds";
+import { MyTable } from "../kitchen/MyTable/MyTable";
+import CustomButton from "../kitchen/CustomButton/CustomButton";
 import VisitorSearch from "../kitchen/VisitorSearch/VisitorSearch";
-import Table from "../kitchen/Table/Table";
-// import { PaginatedTable } from "../kitchen/PaginatedTable/PaginatedTable";
-import {PaginatedTable} from "../kitchen/PaginatedTable/PaginatedTable";
 
-let thead = [
+let supervisorHead = [
+  <>
+    <VisitorSearch />
+  </>,
   "Requested Date",
   "P.No",
   "Department",
@@ -19,61 +17,42 @@ let thead = [
   "Rejection reason",
   "Visitor Information",
 ];
-let tbody = [
-  {
-    name: "M Razi",
-    date: "21 Mar 2021",
-    pNo: "4342",
-    dep: "JC",
-    status: "Approved",
-    rejectionReason: " . ",
-  },
-  {
-    name: "Alex Jon",
-    date: "21 Mar 2021",
-    pNo: "4342",
-    dep: "JC",
-    status: "Approved",
-    rejectionReason: " . ",
-  },
-  {
-    name: "Alex Jon",
-    date: "21 Mar 2021",
-    pNo: "4342",
-    dep: "JC",
-    status: "Approved",
-    rejectionReason: " . ",
-  },
-  {
-    name: "Alex Jon",
-    date: "21 Mar 2021",
-    pNo: "4342",
-    dep: "JC",
-    status: "Approved",
-    rejectionReason: " . ",
-  },
-  {
-    name: "M Razi",
-    date: "21 Mar 2021",
-    pNo: "4342",
-    dep: "JC",
-    status: "Approved",
-    rejectionReason: " . ",
-  },
+let supervisorBody = [
+  [
+    "Ahmed",
+    "54545677-5",
+    "21-2-2021",
+    "DHA",
+    "Meeting",
+    "...",
+    <>
+      <CustomButton btnTitle="View Information" />
+    </>,
+  ],
+  [
+    "Ahmed",
+    "54545677-5",
+    "21-2-2021",
+    "DHA",
+    "Meeting",
+    "...",
+    <>
+      <CustomButton btnTitle="View Information" />
+    </>,
+  ],
+  [
+    "Ahmed",
+    "54545677-5",
+    "21-2-2021",
+    "DHA",
+    "Meeting",
+    "...",
+    <>
+      <CustomButton btnTitle="View Information" />
+    </>,
+  ],
 ];
 function Supervisor() {
-  const [searchString, setSearchString] = React.useState("");
-  const [searchResult, setSearchResult] = React.useState([]);
-
-  React.useEffect(() => {
-    let results = [];
-    if (searchString === "") results = tbody;
-    else
-      results = tbody.filter((person) => {
-        return person.name.toLowerCase().includes(searchString.toLowerCase());
-      });
-    setSearchResult(results);
-  }, [searchString]);
   return (
     <div className="supervisor">
       <p>Supervisor</p>
@@ -93,21 +72,7 @@ function Supervisor() {
           <Link to="/CheckedIn"> Checked In</Link>
           <Link to="/CheckedOut"> Checked Out</Link>
         </div>
-        {/* <table className="table abcd">
-          <thead className="thead">
-            <tr className="tr">
-              <th>
-                <VisitorSearch searchStringHandler={setSearchString} />
-              </th>
-              <VisitorThead TheadItem={thead} />
-            </tr>
-          </thead>
-          <tbody className="tbody">
-            <VisitorTbody TbodyItems={searchResult} myButtonTitle="View Information"/>
-          </tbody>
-        </table> */}
-        {/* <Table Columns={thead} rows={tbody} isAdministorCompTable="false" isButton="true"/> */}
-        <PaginatedTable  Columns={thead} rows={tbody} isAdministorCompTable="false" />
+        <MyTable data={supervisorBody} heads={supervisorHead} />
       </div>
     </div>
   );
