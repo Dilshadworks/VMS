@@ -1,7 +1,20 @@
+/**** Add_New_User_Modal Style ****/
+
 .modalContainer{
-    padding: 20px ;
+    padding: 20px;
     text-align: center;
+    width: 70%;
+    margin: 0 auto;
 }
 .pbottom {
     margin-bottom: 15px;
+}
+.modalBtn{
+    width: 30%;
+    margin-left: 10px;
+}
+.mainModalBtn{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }

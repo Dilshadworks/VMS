@@ -7,11 +7,82 @@ import ModalBox from "../../kitchen/ModalBox/ModalBox";
 import IdScanerModal from "./IdScanerModal/IdScanerModal";
 import { MyTable } from "../../kitchen/MyTable/MyTable";
 import VisitorSearch from "../../kitchen/VisitorSearch/VisitorSearch";
+import ViewInformation from "./ViewInformation/ViewInformation";
 
-
+const VisitorData = [
+  [
+    "Ahmed",
+    "54545677-5",
+    "21-2-2021",
+    "DHA",
+    "Meeting",
+    "In 12:00pm Out 02:00am",
+  ],
+  [
+    "Zeeshan",
+    "54545677-5",
+    "21-2-2021",
+    "DHA",
+    "Meeting",
+    "In 12:00pm Out 02:00am",
+  ],
+  [
+    "Ali",
+    "54545677-5",
+    "21-2-2021",
+    "DHA",
+    "Meeting",
+    "In 12:00pm Out 02:00am",
+  ],
+  [
+    "salman",
+    "54545677-5",
+    "21-2-2021",
+    "DHA",
+    "Meeting",
+    "In 12:00pm Out 02:00am",
+  ],
+];
 
 export function VisoterRecord() {
   const [modalToggle, setModalToggle] = useState(false);
+  const [ModalToggleForViewInfo, setModalToggleForViewInfo] = useState(false);
+
+  const tableData = VisitorData.map((d) => {
+    //console.log("data is", d)
+    return [
+      ...d,
+      <>
+        <CustomButton
+          btnTitle="View Information"
+          onClick={() => {
+            setModalToggle(true);
+          }}
+        />
+      </>,
+    ];
+  });
+
+  const [filtered, setFiltered] = useState(tableData);
+
+  const searchStringHandler = (value) => {
+    const f = tableData.filter((d) => {
+      return d[0].toLowerCase().includes(value.toLowerCase());
+    });
+    setFiltered(f);
+  };
+
+  let visitorHead = [
+    <>
+      <VisitorSearch searchStringHandler={searchStringHandler} />
+    </>,
+    "CNIC",
+    "Arrival Date",
+    "Site of visit",
+    "Visit Type",
+    "Time In",
+    "Requester information",
+  ];
 
   return (
     <>
@@ -35,7 +106,7 @@ export function VisoterRecord() {
           <div className="bannerBottom">
             <Link to="/currentlyCheckedIn">Currently Checked In</Link>
           </div>
-          <MyTable data={VisitorData} heads={visitorHead} />
+          <MyTable data={filtered} heads={visitorHead} />
         </div>
       </div>
       {modalToggle && (
@@ -47,45 +118,16 @@ export function VisoterRecord() {
           <IdScanerModal />
         </ModalBox>
       )}
+      
+       {ModalToggleForViewInfo && (
+        <ModalBox
+          closeModal={() => {
+            setModalToggleForViewInfo(false);
+          }}
+        >
+          <ViewInformation />
+        </ModalBox>
+      )}
     </>
   );
 }
-
-
-
-let visitorHead = [
-  <>
-    <VisitorSearch />
-  </>,
-  "CNIC",
-  "Arrival Date",
-  "Site of visit",
-  "Visit Type",
-  "Time In",
-  "Requester information",
-];
-
-let VisitorData = [
-  [
-    "Ahmed",
-    "54545677-5",
-    "21-2-2021",
-    "DHA",
-    "Meeting",
-    "In 12:00pm Out 02:00am",
-    <>
-      <CustomButton btnTitle="View Information" />
-    </>,
-  ],
-  [
-    "Ahmed",
-    "54545677-5",
-    "21-2-2021",
-    "DHA",
-    "Meeting",
-    "In 12:00pm Out 02:00am",
-    <>
-      <CustomButton btnTitle="View Information" />
-    </>,
-  ],
-];
