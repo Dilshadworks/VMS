@@ -4,11 +4,7 @@ import Styles from "./Style.css";
 
 export default function ModalBox(props) {
   const { closeModal } = props;
-  // useEffect(() => {
-  //   return () => {
-  //     console.log("modalllllllllll unmounting...............");
-  //   };
-  // }, []);
+
   return (
     <div className="modalOverlay">
       <div className="modalContent">
