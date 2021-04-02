@@ -6,6 +6,7 @@ import CustomButton from "../kitchen/CustomButton/CustomButton";
 import ModalBox from "../kitchen/ModalBox/ModalBox";
 import AddNewUserModal from "./AddNewUserModal/AddNewUserModal";
 import { MyTable } from "../kitchen/MyTable/MyTable";
+import SuccessModal from "./AddNewUserModal/SuccessModal/SuccessModal";
 
 let adminHead = [
   "Account Type",
@@ -61,6 +62,7 @@ let adminBody = [
 
 export default function Administrator() {
   const [modalToggle, setModalToggle] = useState(false);
+  const [successToggle, setSuccessToggle] = useState(false);
   return (
     <>
       <div className="administrator">
@@ -84,7 +86,9 @@ export default function Administrator() {
             <div className="AddUserBtn">
               <CustomButton
                 btnTitle="Add New User"
-                onClick={() => setModalToggle(true)}
+                onClick={() => {
+                  setModalToggle(true);
+                }}
               />
             </div>
           </div>
@@ -97,7 +101,19 @@ export default function Administrator() {
             setModalToggle(false);
           }}
         >
-          <AddNewUserModal />
+          {successToggle ? (
+            <SuccessModal
+              closeModal={() => {
+                setSuccessToggle(false);
+              }}
+            />
+          ) : (
+            <AddNewUserModal
+              onSuccess={() => {
+                setSuccessToggle(true);
+              }}
+            />
+          )}
         </ModalBox>
       )}
     </>

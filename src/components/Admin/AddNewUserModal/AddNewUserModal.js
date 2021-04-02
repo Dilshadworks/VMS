@@ -35,8 +35,7 @@ const departmentType = [
   { id: 4, text: "s4" },
 ];
 
-export default function AddNewUserModal() {
-  const [modalToggle, setModalToggle] = useState(false);
+export default function AddNewUserModal({ onSuccess }) {
   const [addNewUserInfo, setAdNewUserInfo] = useState({
     name: "",
     email: "",
@@ -61,7 +60,7 @@ export default function AddNewUserModal() {
       <div className="modalContainer">
         <div className="form-row pbottom">
           <Label label="Employee" />
-          <div className="form-group">
+          <div className="form-group ">
             <InputField
               type="text"
               name="name"
@@ -129,27 +128,20 @@ export default function AddNewUserModal() {
             />
           </div>
         </div>
-        <div className="formControl form-row">
-          <div className="form-group">
+        <div className="formControl mainModalBtn">
+          <div className="modalBtn">
             <CustomButton btnTitle="Cancel" />
           </div>
-          <div className="form-group">
+          <div className="modalBtn">
             <CustomButton
               btnTitle="Add User"
-              onClick={() => setModalToggle(true)}
+              onClick={() => {
+                onSuccess();
+              }}
             />
           </div>
         </div>
       </div>
-      {modalToggle && (
-        <ModalBox
-          closeModal={() => {
-            setModalToggle(false);
-          }}
-        >
-          <SuccessModal />
-        </ModalBox>
-      )}
     </>
   );
 }
