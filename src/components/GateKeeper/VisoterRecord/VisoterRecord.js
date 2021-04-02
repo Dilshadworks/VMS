@@ -7,7 +7,7 @@ import ModalBox from "../../kitchen/ModalBox/ModalBox";
 import IdScanerModal from "./IdScanerModal/IdScanerModal";
 import { MyTable } from "../../kitchen/MyTable/MyTable";
 import VisitorSearch from "../../kitchen/VisitorSearch/VisitorSearch";
-import ViewInformation from "./ViewInformation/ViewInformation";
+import ViewInformation from "../../kitchen/CustomButton/ViewInformation/ViewInformation";
 
 const VisitorData = [
   [
@@ -27,7 +27,7 @@ const VisitorData = [
     "In 12:00pm Out 02:00am",
   ],
   [
-    "Ali",
+    "Ghumman",
     "54545677-5",
     "21-2-2021",
     "DHA",
@@ -48,15 +48,14 @@ export function VisoterRecord() {
   const [modalToggle, setModalToggle] = useState(false);
   const [ModalToggleForViewInfo, setModalToggleForViewInfo] = useState(false);
 
-  const tableData = VisitorData.map((d) => {
-    //console.log("data is", d)
+  const tableData = VisitorData.map((data) => {
     return [
-      ...d,
+      ...data,
       <>
         <CustomButton
           btnTitle="View Information"
           onClick={() => {
-            setModalToggle(true);
+            setModalToggleForViewInfo(true);
           }}
         />
       </>,
@@ -66,10 +65,10 @@ export function VisoterRecord() {
   const [filtered, setFiltered] = useState(tableData);
 
   const searchStringHandler = (value) => {
-    const f = tableData.filter((d) => {
-      return d[0].toLowerCase().includes(value.toLowerCase());
+    const searchResult = tableData.filter((data) => {
+      return data[0].toLowerCase().includes(value.toLowerCase());
     });
-    setFiltered(f);
+    setFiltered(searchResult);
   };
 
   let visitorHead = [

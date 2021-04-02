@@ -1,23 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
 import { Link } from "react-router-dom";
 import Carrds from "../kitchen/Cards/Carrds";
+import ModalBox from "../kitchen/ModalBox/ModalBox";
 import { MyTable } from "../kitchen/MyTable/MyTable";
 import CustomButton from "../kitchen/CustomButton/CustomButton";
 import VisitorSearch from "../kitchen/VisitorSearch/VisitorSearch";
+import ViewInformation from "../kitchen/CustomButton/ViewInformation/ViewInformation";
 
-let supervisorHead = [
-  <>
-    <VisitorSearch />
-  </>,
-  "Requested Date",
-  "P.No",
-  "Department",
-  "Status",
-  "Rejection reason",
-  "Visitor Information",
-];
-let supervisorBody = [
+
+let supervisorData = [
   [
     "Ahmed",
     "54545677-5",
@@ -25,9 +17,6 @@ let supervisorBody = [
     "DHA",
     "Meeting",
     "...",
-    <>
-      <CustomButton btnTitle="View Information" />
-    </>,
   ],
   [
     "Ahmed",
@@ -36,24 +25,52 @@ let supervisorBody = [
     "DHA",
     "Meeting",
     "...",
-    <>
-      <CustomButton btnTitle="View Information" />
-    </>,
   ],
   [
-    "Ahmed",
+    "Ghumman",
     "54545677-5",
     "21-2-2021",
     "DHA",
     "Meeting",
     "...",
-    <>
-      <CustomButton btnTitle="View Information" />
-    </>,
   ],
 ];
+
 function Supervisor() {
+  const [modalToggle, setModalToggle] = useState(false);
+  const tableData = supervisorData.map((data) =>{
+    return[
+      ...data,
+    <>
+      <CustomButton btnTitle="View Information" onClick={() => setModalToggle(true)}/>
+    </>,
+    ]
+  })
+
+  const [filtered, setFiltered] = useState(tableData);
+
+  const searchStringHandler = (value) => {
+    const searchResult = tableData.filter((data) => {
+      return data[0].toLowerCase().includes(value.toLowerCase());
+    });
+    setFiltered(searchResult);
+  };
+
+
+  let supervisorHead = [
+    <>
+      <VisitorSearch searchStringHandler={searchStringHandler} />
+    </>,
+    "Requested Date",
+    "P.No",
+    "Department",
+    "Status",
+    "Rejection reason",
+    "Visitor Information",
+  ];
+
   return (
+    <>
     <div className="supervisor">
       <p>Supervisor</p>
       <span>Statistic</span>
@@ -72,9 +89,19 @@ function Supervisor() {
           <Link to="/CheckedIn"> Checked In</Link>
           <Link to="/CheckedOut"> Checked Out</Link>
         </div>
-        <MyTable data={supervisorBody} heads={supervisorHead} />
+        <MyTable data={filtered} heads={supervisorHead} />
       </div>
     </div>
+    {modalToggle && (
+      <ModalBox
+        closeModal={() => {
+          setModalToggle(false);
+        }}
+      >
+        <ViewInformation />
+      </ModalBox>
+    )}
+    </>
   );
 }
 export default Supervisor;
