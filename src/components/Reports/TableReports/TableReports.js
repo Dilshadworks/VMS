@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Tabs from "../../kitchen/Tabs/Tabs";
 import { BsBook } from "react-icons/bs";
 import CustomButton from "../../kitchen/CustomButton/CustomButton";
 import { MyTable } from "../../kitchen/MyTable/MyTable";
+import ModalBox from "../../kitchen/ModalBox/ModalBox";
+import Filter from "./Filter/Filter";
 
 let reportsHead = [
   "Month",
@@ -121,33 +123,52 @@ let labor = [
 ];
 
 export default function TableReports() {
+  const [modalToggle, setModalToggle] = useState(false);
   return (
-    <div className="visitorRecord">
-      <div className="bannerTop">
-        <p>
-          <BsBook size={32} style={{ color: "#414141", marginRight: "15px" }} />
-          Reports
-        </p>
-        <div className="scanButton">
-          <CustomButton btnTitle="Filter" />
+    <>
+      <div className="visitorRecord">
+        <div className="bannerTop">
+          <p>
+            <BsBook
+              size={32}
+              style={{ color: "#414141", marginRight: "15px" }}
+            />
+            Reports
+          </p>
+          <div className="scanButton">
+            <CustomButton
+              btnTitle="Filter"
+              onClick={() => setModalToggle(true)}
+            />
+          </div>
+        </div>
+        <div className="tableStructure">
+          <Tabs>
+            <div label="All">
+              <MyTable data={all} heads={reportsHead} />
+            </div>
+            <div label="Official">
+              <MyTable data={official} heads={reportsHead} />
+            </div>
+            <div label="Personal">
+              <MyTable data={personal} heads={reportsHead} />
+            </div>
+            <div label="Labor">
+              <MyTable data={labor} heads={reportsHead} />
+            </div>
+          </Tabs>
         </div>
       </div>
-      <div className="tableStructure">
-        <Tabs>
-          <div label="All">
-            <MyTable data={all} heads={reportsHead} />
-          </div>
-          <div label="Official">
-            <MyTable data={official} heads={reportsHead} />
-          </div>
-          <div label="Personal">
-            <MyTable data={personal} heads={reportsHead} />
-          </div>
-          <div label="Labor">
-            <MyTable data={labor} heads={reportsHead} />
-          </div>
-        </Tabs>
-      </div>
-    </div>
+
+      {modalToggle && (
+        <ModalBox
+          closeModal={() => {
+            setModalToggle(false);
+          }}
+        >
+          <Filter />
+        </ModalBox>
+      )}
+    </>
   );
 }
