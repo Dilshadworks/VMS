@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import InputField from "../../kitchen/InputField/InputField";
 import Label from "../../kitchen/Label/Label";
 import DropDown from "../../kitchen/DropDown/DropDown";
-import Styles from "./Style.css";
+import "./Style.css";
 import CustomButton from "../../kitchen/CustomButton/CustomButton";
 import ModalBox from "../../kitchen/ModalBox/ModalBox";
 import SuccessModal from "./SuccessModal/SuccessModal";

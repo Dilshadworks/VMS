@@ -105,7 +105,6 @@ export default function AddVisitorRecord() {
           handleNext={handleNext}
           handleChange={handleChangeVisitor}
           requestInfo={reqeInfo}
-          handleNext={handleNext}
           handlePrev={handlePrev}
         />
       )}
@@ -115,7 +114,6 @@ export default function AddVisitorRecord() {
           handleNext={handleNext}
           handleChange={handleChangeVehicle}
           requestInfo={reqeInfo}
-          handleNext={handleNext}
           handlePrev={handlePrev}
         />
       )}
@@ -125,7 +123,6 @@ export default function AddVisitorRecord() {
           handleNext={handleNext}
           handleChange={handleChangeStayingDetails}
           requestInfo={reqeInfo}
-          handleNext={handleNext}
           handlePrev={handlePrev}
         />
       )}

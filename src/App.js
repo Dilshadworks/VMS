@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Layout from "./components/Layout/layout";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import GateKeeper from "./components/GateKeeper/GateKeeper";
 import { VisoterRecord } from "./components/GateKeeper/VisoterRecord/VisoterRecord";
 import { Dashboard } from "./components/Dashboard/Dashboard";
@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="app">
       {/* <Counter /> */}
-      <Router>
+      <BrowserRouter>
         <Layout>
           <Switch>
             <Route exact path="/dashboard" component={Dashboard} />
@@ -23,9 +23,10 @@ function App() {
             <Route exact path="/supervisor" component={Supervisor} />
             <Route exact path="/admin" component={Administrator} />
             <Route exact path="/reports" component={Reports} />
+            <Redirect to={{ pathname: "/dashboard" }} />
           </Switch>
         </Layout>
-      </Router>
+      </BrowserRouter>
     </div>
   );
 }
