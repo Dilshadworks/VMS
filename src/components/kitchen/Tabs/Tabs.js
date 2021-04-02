@@ -15,21 +15,16 @@ export default function Tabs(props) {
         {props.children.map((tab) => {
           const label = tab.props.label;
           return (
-            <li className={label == activeTab ? "current" : ""} key={label}>
-              <a href="#" onClick={(e) => handleClick(e, label)}>
-                {label}
-              </a>
+            <li className={label === activeTab ? "current" : ""} key={label}>
+              <button onClick={(e) => handleClick(e, label)}>{label}</button>
             </li>
           );
         })}
       </ul>
       {props.children.map((one) => {
-        if (one.props.label == activeTab)
-          return (
-            <div key={one.props.label}>
-              {one.props.children}
-            </div>
-          );
+        if (one.props.label === activeTab)
+          return <div key={one.props.label}>{one.props.children}</div>;
+        else return "";
       })}
     </>
   );
