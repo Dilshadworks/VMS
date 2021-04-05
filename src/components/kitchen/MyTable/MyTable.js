@@ -1,22 +1,22 @@
 import React from "react";
 import Styles from "./Style.css";
 import Pagination from "react-js-pagination";
-
+ 
 export function MyTable({ data, heads }) {
-  const records = data;
-  const recordsPerPage = 4;
-  const [activePage, setCurrentPage] = React.useState(1);
-
+  // const records = data;
+  // const recordsPerPage = 4;
+  // const [activePage, setCurrentPage] = React.useState(1);
+ 
   // Logic for displaying current todos
-  const indexOfLastrecords = activePage * recordsPerPage;
-  const indexOfFirstrecords = indexOfLastrecords - recordsPerPage;
-  const currentrecords = records.slice(indexOfFirstrecords, indexOfLastrecords);
-  console.log("Currentrecords", currentrecords);
-
-  const handlePageChange = (pageNumber) => {
-    console.log(`active page is ${pageNumber}`);
-    setCurrentPage(pageNumber);
-  };
+  // const indexOfLastrecords = activePage * recordsPerPage;
+  // const indexOfFirstrecords = indexOfLastrecords - recordsPerPage;
+  // const currentrecords = records.slice(indexOfFirstrecords, indexOfLastrecords);
+  // console.log("Currentrecords", currentrecords);
+ 
+  // const handlePageChange = (pageNumber) => {
+  //   console.log(`active page is ${pageNumber}`);
+  //   setCurrentPage(pageNumber);
+  // };
   return (
     <>
       <table className="table">
@@ -28,7 +28,7 @@ export function MyTable({ data, heads }) {
           </tr>
         </thead>
         <tbody className="tbody">
-          {currentrecords.map((row, index) => (
+          {data.map((row, index) => (
             <tr key={index}>
               {row.map((tcell, index) => (
                 <td key={index}>{tcell}</td>
@@ -36,18 +36,17 @@ export function MyTable({ data, heads }) {
             </tr>
           ))}
         </tbody>
-        <tfooter>
+        {/* <tfooter>
           <div className="pagination">
             <Pagination
               activePage={activePage}
               itemsCountPerPage={recordsPerPage}
               totalItemsCount={records.length}
               pageRangeDisplayed={3}
-              // hideNavigation="false"
               onChange={handlePageChange}
             />
           </div>
-        </tfooter>
+        </tfooter> */}
       </table>
     </>
   );

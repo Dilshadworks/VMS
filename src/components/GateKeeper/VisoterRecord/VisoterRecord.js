@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Styles from "./Style.css";
 import CustomButton from "../../kitchen/CustomButton/CustomButton";
 import { Link } from "react-router-dom";
 import { BsBook } from "react-icons/bs";
 import ModalBox from "../../kitchen/ModalBox/ModalBox";
 import IdScanerModal from "./IdScanerModal/IdScanerModal";
-import { MyTable } from "../../kitchen/MyTable/MyTable";
+import {MyTable} from "./MyTable/MyTable";
 import VisitorSearch from "../../kitchen/VisitorSearch/VisitorSearch";
-import ViewInformation from "../../kitchen/CustomButton/ViewInformation/ViewInformation";
 
 const VisitorData = [
   [
@@ -45,35 +45,19 @@ const VisitorData = [
 ];
 
 export function VisoterRecord() {
+  useEffect(async () => {
+    const result = await axios(
+      "http://vmslocal:61966/api/Employee/GetEmployeesList"
+    );
+
+    setApiData(result.data);
+  }, []);
+  const [apiData, setApiData] = useState([]);
   const [modalToggle, setModalToggle] = useState(false);
-  const [ModalToggleForViewInfo, setModalToggleForViewInfo] = useState(false);
-
-  const tableData = VisitorData.map((data) => {
-    return [
-      ...data,
-      <>
-        <CustomButton
-          btnTitle="View Information"
-          onClick={() => {
-            setModalToggleForViewInfo(true);
-          }}
-        />
-      </>,
-    ];
-  });
-
-  const [filtered, setFiltered] = useState(tableData);
-
-  const searchStringHandler = (value) => {
-    const searchResult = tableData.filter((data) => {
-      return data[0].toLowerCase().includes(value.toLowerCase());
-    });
-    setFiltered(searchResult);
-  };
 
   let visitorHead = [
     <>
-      <VisitorSearch searchStringHandler={searchStringHandler} />
+      <VisitorSearch />
     </>,
     "CNIC",
     "Arrival Date",
@@ -105,7 +89,7 @@ export function VisoterRecord() {
           <div className="bannerBottom">
             <Link to="/currentlyCheckedIn">Currently Checked In</Link>
           </div>
-          <MyTable data={filtered} heads={visitorHead} />
+          <MyTable data={apiData} heads={visitorHead} />
         </div>
       </div>
       {modalToggle && (
@@ -115,16 +99,6 @@ export function VisoterRecord() {
           }}
         >
           <IdScanerModal />
-        </ModalBox>
-      )}
-      
-       {ModalToggleForViewInfo && (
-        <ModalBox
-          closeModal={() => {
-            setModalToggleForViewInfo(false);
-          }}
-        >
-          <ViewInformation />
         </ModalBox>
       )}
     </>
