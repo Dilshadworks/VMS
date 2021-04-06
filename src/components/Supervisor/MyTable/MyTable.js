@@ -34,7 +34,7 @@ export function MyTable({ data, heads }) {
             </tr>
           ))}
         </tbody>
-        <tfooter>Pagination</tfooter>
+        {/* <tfooter>Pagination</tfooter> */}
       </table>
       {modalToggle && (
         <ModalBox
